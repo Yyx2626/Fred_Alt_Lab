@@ -42,7 +42,7 @@ def parseFILE(args):
     else:
         prefix_pos = args.bamfile.replace('.bam', '.pos')
         os.system('samtools view -F 0x10 -hb -o %s.bam %s' % (prefix_pos, args.bamfile))
-        os.system('samtools sort %s.bam -o %s.sort > %s.sort.bam' % (prefix_pos, prefix_pos, prefix_pos))
+        os.system('samtools sort %s.bam %s.sort' % (prefix_pos, prefix_pos, prefix_pos))
         os.system('mv %s.sort.bam %s.bam' % (prefix_pos, prefix_pos))
         os.system('samtools index %s.bam' % prefix_pos)
         os.system('bam2wig.py -i %s.bam -o %s -s %s %s' % (prefix_pos, prefix_pos, genomefile, normdef))
@@ -50,7 +50,7 @@ def parseFILE(args):
         # Need to add minus symbol in minus bw file
         prefix_neg = args.bamfile.replace('.bam', '.neg')
         os.system('samtools view -f 0x10 -hb -o %s.bam %s' % (prefix_neg, args.bamfile))
-        os.system('samtools sort %s.bam -o %s.sort > %s.sort.bam' % (prefix_neg, prefix_neg, prefix_neg))
+        os.system('samtools sort %s.bam %s.sort' % (prefix_neg, prefix_neg, prefix_neg))
         os.system('mv %s.sort.bam %s.bam' % (prefix_neg, prefix_neg))
         os.system('samtools index %s.bam' % prefix_neg)
         os.system('bam2wig.py -i %s.bam -o %s -s %s %s' % (prefix_neg, prefix_neg, genomefile, normdef))

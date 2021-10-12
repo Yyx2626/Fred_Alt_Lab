@@ -34,7 +34,7 @@ def fq_to_bam(args):
     else:
         os.system("bowtie2 -x {3} -f -U {0} -p 6 --non-deterministic -S {1}/{2}.sam".format(args.f1,args.firstdirectory,args.output,args.genome))
     os.system("samtools view -bhS {0}/{1}.sam -o {0}/{1}.bam".format(args.firstdirectory, args.output))
-    os.system("samtools sort {0}/{1}.bam -o {0}/{1}.sort > {0}/{1}.sort.bam".format(args.firstdirectory, args.output))
+    os.system("samtools sort {0}/{1}.bam {0}/{1}.sort".format(args.firstdirectory, args.output))
     os.system("mv {0}/{1}.sort.bam {0}/{1}.bam".format(args.firstdirectory, args.output))
     os.system("samtools index {0}/{1}.bam".format(args.firstdirectory, args.output))
     #os.system("rm -f {0}/{1}.sam".format(args.firstdirectory, args.output))

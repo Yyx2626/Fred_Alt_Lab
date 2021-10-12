@@ -46,7 +46,7 @@ def fq_to_bam(args):
 
     os.system("bowtie2 -x {2} -U {0} -p 6 --non-deterministic -S alignment/{1}.sam".format(args.file, args.output, args.genome))
     os.system("samtools view -bhS alignment/{0}.sam -o alignment/{0}.bam".format(args.output))
-    os.system("samtools sort alignment/{0}.bam -o alignment/{0}.sort > alignment/{0}.sort.bam".format(args.output))
+    os.system("samtools sort alignment/{0}.bam alignment/{0}.sort".format(args.output))
     os.system("mv alignment/{0}.sort.bam alignment/{0}.bam".format(args.output))
     os.system("samtools index alignment/{0}.bam alignment/{0}.bam.bai".format(args.output))
     #os.system("samtools stats alignment/{0}.bam > alignment/{0}.stats.txt".format(args.output))
