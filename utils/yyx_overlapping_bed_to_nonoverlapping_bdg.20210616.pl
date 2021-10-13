@@ -84,10 +84,30 @@ sub max{
 	return $ans;
 }
 
+sub abs_max{
+	my $ans=undef;
+	foreach (@_){
+		if(!defined($ans) || abs($_) > abs($ans)){
+			$ans=$_;
+		}
+	}
+	return $ans;
+}
+
 sub min{
 	my $ans=undef;
 	foreach (@_){
 		if(!defined($ans) || $_ < $ans){
+			$ans=$_;
+		}
+	}
+	return $ans;
+}
+
+sub abs_min{
+	my $ans=undef;
+	foreach (@_){
+		if(!defined(abs($ans)) || abs($_) < abs($ans)){
 			$ans=$_;
 		}
 	}
