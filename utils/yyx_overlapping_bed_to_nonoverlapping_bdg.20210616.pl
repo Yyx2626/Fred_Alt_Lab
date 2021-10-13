@@ -25,13 +25,13 @@ if(@ARGV < 2){
 }
 my ($input_filename, $score_operator) = @ARGV;
 
-if($score_operator=="abs_max"){
-}elsif($score_operator=="abs_min"){
-}elsif($score_operator=="max"){
-}elsif($score_operator=="min"){
-}elsif($score_operator=="mean"){
-}elsif($score_operator=="bp_switch"){
-}elsif($score_operator=="comma_separated"){
+if($score_operator eq "abs_max"){
+}elsif($score_operator eq "abs_min"){
+}elsif($score_operator eq "max"){
+}elsif($score_operator eq "min"){
+}elsif($score_operator eq "mean"){
+}elsif($score_operator eq "bp_switch"){
+}elsif($score_operator eq "comma_separated"){
 }else{
 	die "Error: unrecognized overlapping_score_operator = $score_operator
 	should be one of the following options:
