@@ -1,11 +1,11 @@
 import sys
 region_pos = {}
 region_neg = {}
-for line in open('%s.positive.cnt' % sys.argv[1]):
+for line in open('%s.pos.cnt' % sys.argv[1]):
     l = line.strip().split()
     region_pos[l[0]] = float(l[-1])
 
-for line in open('%s.negative.cnt' % sys.argv[1]):
+for line in open('%s.neg.cnt' % sys.argv[1]):
     l = line.strip().split()
     region_neg[l[0]] = float(l[-1])
 
