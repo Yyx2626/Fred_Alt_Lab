@@ -10,7 +10,10 @@ Author: Nia Kyritsis, Jianqiao Hu, Zhou Du, et al. @ Boston Children's Hospital 
 * samtools (0.1.19)
 * homer (4.9.1)
 * bedtools (2.29.0)
-* bam2wig.py (3.0.1) by Liguo Wang
+* gfold
+* bx-python
+* RSeQC
+  * bam2wig.py (3.0.1) by Liguo Wang
 * UCSC binary utilities (http://hgdownload.soe.ucsc.edu/admin/exe/)
   * wigToBigWig (v4)
 
