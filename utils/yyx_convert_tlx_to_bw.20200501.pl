@@ -5,7 +5,7 @@ use warnings;
 
 my $version = '
 Author: Adam Yongxin Ye @ BCH
-Version: 0.1.1 (2020-09-04)
+Version: 0.1.1 (2020-05-01)
 ';
 my $usage = "Usage: $0 <input.tlx> <chromSize> <output_prefix>
 	[should_strand (default:1)] [normalize_to (default:0)]
@@ -97,25 +97,38 @@ if(!$should_skip){
 		s/[\r\n]+$//;
 		if(/^\s*$/){ next; }
 		@F = split/\t/;
+		if($F[$f2i{"Rname"}] =~ /^\s*$/){
+			print STDERR "Warning: no Rname info for line $rowidx, so I skip it\n";
+			$rowidx++;
+			next;
+		}
 		$chr = $F[$f2i{"Rname"}];
-		if(!defined($chr)){ next; }
 		$end = 0;
 		$start = 0;
 		if($retrieve_element eq "junction"){
+			if($F[$f2i{"Junction"}] =~ /^\s*$/){
+				print STDERR "Warning: no Junction info for line $rowidx, so I skip it\n";
+				$rowidx++;
+				next;
+			}
 			$end = $F[$f2i{"Junction"}];
-			if(!defined($end)){ next; }
 			$start = $end - 1;
-			if($start < 0){ next; }
 		}else{
+			if($F[$f2i{"Rstart"}] =~ /^\s*$/ || $F[$f2i{"Rend"}] =~ /^\s*$/){
+				print STDERR "Warning: no Rstart or Rend info for line $rowidx, so I skip it\n";
+				$rowidx++;
+				next;
+			}
 			$end = $F[$f2i{"Rend"}];
-			if(!defined($end)){ next; }
 			$start = $F[$f2i{"Rstart"}] - 1;
-			if($start < 0){ next; }
 		}
 		$name = $F[$f2i{"Qname"}];
-		$strand = "+";
+		$strand = "*";
 		if($F[$f2i{"Strand"}] < 0){
 			$strand = "-";
+		}
+		if($F[$f2i{"Strand"}] > 0){
+			$strand = "+";
 		}
 		if($should_strand){
 			if($strand eq "+"){
