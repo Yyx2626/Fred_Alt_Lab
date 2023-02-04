@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 Convert TLX file to BED/BEDGRAPH file
 """
