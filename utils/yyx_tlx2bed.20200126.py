@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 #### Usage: cat <input.tlx> | python this.py <which_part>
 #### Options:
