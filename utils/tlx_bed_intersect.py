@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 import sys
 import os
 
-###python3 tlx_bed_intersect.py input.tlx RSS_40.bed extract_comp
+### (python3) tlx_bed_intersect.py input.tlx RSS_40.bed extract_comp
 
 def main():
 
